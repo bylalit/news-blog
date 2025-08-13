@@ -17,10 +17,8 @@ const index = async (req, res) => {
                                                             { path: 'author', select: 'fullname' }
                                                         ],
                                                         sort: '-createdAt' });
-    const categoryInUse = await newsModel.distinct('category')
-    const categories = await categoryModel.find({'_id': {$in: categoryInUse}})
     // res.json({paginatedNews});
-    res.render('index', { paginatedNews, query: req.query, categories });
+    res.render('index', { paginatedNews, query: req.query });
 };
 
 const articleByCategory = async (req, res, next) => {
@@ -123,5 +121,6 @@ module.exports = {
     author,
     addComment
 }
+
 
 
